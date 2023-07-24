@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formularios y Listas Desplegables</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <!-- Formulario de Doctores -->
+    <h2>Formulario de Doctores</h2>
+    <form id="doctorForm">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required><br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" required><br>
+
+        <label for="especialidad">Especialidad:</label>
+        <select id="especialidad">
+            <option value="Medicina general">Medicina general</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Medicina interna">Medicina interna</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Rehabilitación física">Rehabilitación física</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Odontología">Odontología</option>
+            <option value="Radiología">Radiología</option>
+        </select><br>
+
+        <label for="consultorio">Consultorio:</label>
+        <input type="text" id="consultorio" required><br>
+
+        <label for="correo">Correo de contacto:</label>
+        <input type="email" id="correo" required><br>
+
+        <button type="button" onclick="agregarDoctor()">Agregar Doctor</button>
+    </form>
+
+    <!-- Formulario de Personas -->
+    <h2>Formulario de Personas</h2>
+    <form id="personaForm">
+        <label for="nombrePersona">Nombre:</label>
+        <input type="text" id="nombrePersona" required><br>
+
+        <label for="cedula">Número de cédula:</label>
+        <input type="text" id="cedula" required><br>
+
+        <label for="apellidoPersona">Apellido:</label>
+        <input type="text" id="apellidoPersona" required><br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required><br>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" required><br>
+
+        <button type="button" onclick="agregarPersona()">Agregar Persona</button>
+    </form>
+
+    <!-- Formulario de Cita Médica -->
+    <h2>Formulario de Cita Médica</h2>
+    <form id="citaMedicaForm">
+        <label for="numeroDocumentoPaciente">Número documento paciente:</label>
+        <input type="text" id="numeroDocumentoPaciente" required><br>
+
+        <label for="especialidadCita">Especialidad:</label>
+        <select id="especialidadCita">
+            <option value="Medicina general">Medicina general</option>
+            <option value="Cardiología">Cardiología</option>
+            <option value="Medicina interna">Medicina interna</option>
+            <option value="Dermatología">Dermatología</option>
+            <option value="Rehabilitación física">Rehabilitación física</option>
+            <option value="Psicología">Psicología</option>
+            <option value="Odontología">Odontología</option>
+            <option value="Radiología">Radiología</option>
+        </select><br>
+
+        <button type="button" onclick="asignarCita()">Asignar Cita</button>
+    </form>
+
+    <script>
+        // Función para validar campos del formulario de Doctores y Personas
+        function validarCamposFormulario() {
+            const nombreRegex = /^[a-zA-Z\s]+$/; // Letras y espacios
+            const cedulaRegex = /^\d+$/; // Solo dígitos
+
+            // Formulario de Doctores
+            const nombreDoctor = document.getElementById("nombre").value;
+            const apellidoDoctor = document.getElementById("apellido").value;
+            const especialidadDoctor = document.getElementById("especialidad").value;
+            const consultorioDoctor = document.getElementById("consultorio").value;
+            const correoDoctor = document.getElementById("correo").value;
+
+            if (!nombreRegex.test(nombreDoctor)) {
+                alert("Ingrese un nombre válido para el doctor.");
+                return false;
+            }
+
+            if (!nombreRegex.test(apellidoDoctor)) {
+                alert("Ingrese un apellido válido para el doctor.");
+                return false;
+            }
+
+            // Resto de validaciones para el formulario de Doctores (especialidad, consultorio, correo, etc.)
+
+            // Formulario de Personas
+            const nombrePersona = document.getElementById("nombrePersona").value;
+            const cedula = document.getElementById("cedula").value;
+            const apellidoPersona = document.getElementById("apellidoPersona").value;
+            const edad = document.getElementById("edad").value;
+            const telefono = document.getElementById("telefono").value;
+
+            if (!nombreRegex.test(nombrePersona)) {
+                alert("Ingrese un nombre válido para la persona.");
+                return false;
+            }
+
+            if (!cedulaRegex.test(cedula)) {
+                alert("Ingrese un número de cédula válido.");
+                return false;
+            }
+
+            // Resto de validaciones para el formulario de Personas (apellido, edad, teléfono, etc.)
+
+            return true; // Si todos los campos son válidos, devuelve true
+        }
+
+        // Función para agregar un doctor
+        function agregarDoctor() {
+            if (validarCamposFormulario()) {
+                // Aquí puedes implementar la lógica para agregar el doctor a la base de datos o realizar alguna acción adicional
+                alert("Doctor agregado correctamente.");
+            }
+        }
+
+        // Función para agregar una persona
+        function agregarPersona() {
+            if (validarCamposFormulario()) {
+                // Aquí puedes implementar la lógica para agregar la persona a la base de datos o realizar alguna acción adicional
+                alert("Persona agregada correctamente.");
+            }
+        }
+
+        // Función para asignar una cita médica
+        function asignarCita() {
+            const numeroDocumentoPaciente = document.getElementById("numeroDocumentoPaciente").value;
+            const especialidadCita = document.getElementById("especialidadCita").value;
+
+            // Aquí puedes implementar la lógica para asignar la cita con el doctor y el paciente.
+            alert("Cita asignada correctamente.");
+        }
+    </script>
+</body>
+</html>
